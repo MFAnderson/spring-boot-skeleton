@@ -1,0 +1,5 @@
+CREATE TABLE SKELETONS (
+    ID BIGINT(20) NOT NULL auto_increment,
+    NAME VARCHAR(255) NOT NULL,
+    PRIMARY KEY (ID)
+    );

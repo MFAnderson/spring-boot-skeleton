@@ -1,0 +1,60 @@
+group 'com.orgname'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
+    }
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+sourceCompatibility = 1.8
+
+jar {
+    baseName = 'spring-boot-skeleton'
+    version = '1.0.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    reports {
+        junitXml.enabled = false
+        html.enabled = true
+    }
+    exclude '**/functional/**'
+}
+
+task unitTest( type: Test ) {
+    exclude '**/functional/**'
+}
+
+task functionalTest( type: Test ) {
+    include '**/functional/**'
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-hateoas")
+    compile("org.springframework:spring-tx")
+
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.0.2'
+    // spring-boot does cleverness based on finding jdbc drivers in the classpath
+    // and double cleverness based on finding an in-memory one (namely spinning up an h2 instance
+    // if you haven't specified a connection string). You probably want to switch this to testCompile
+    // and then you'll have a nice in-memory database for your functional tests.
+    compile("com.h2database:h2")
+    compile("io.springfox:springfox-swagger2:2.2.2")
+    compile("io.springfox:springfox-swagger-ui:2.2.2")
+
+    testCompile("junit:junit")
+    testCompile("com.jayway.restassured:rest-assured:2.9.0")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
