@@ -1,7 +1,7 @@
 package com.orgname.skeleton.services;
 
 import com.orgname.skeleton.mapper.SkeletonMapper;
-import com.orgname.skeleton.resources.Skeleton;
+import com.orgname.skeleton.domain.Skeleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

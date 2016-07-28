@@ -1,4 +1,4 @@
-package com.orgname.skeleton.resources;
+package com.orgname.skeleton.domain;
 
 import org.springframework.hateoas.ResourceSupport;
 

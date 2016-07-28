@@ -1,6 +1,6 @@
 package com.orgname.skeleton.mapper;
 
-import com.orgname.skeleton.resources.Skeleton;
+import com.orgname.skeleton.domain.Skeleton;
 import org.apache.ibatis.annotations.Arg;
 import org.apache.ibatis.annotations.ConstructorArgs;
 import org.apache.ibatis.annotations.Insert;

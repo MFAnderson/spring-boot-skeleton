@@ -40,14 +40,18 @@ task functionalTest( type: Test ) {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.springframework.boot:spring-boot-starter-actuator")
-    compile("org.springframework.boot:spring-boot-starter-jdbc")
     compile("org.springframework.boot:spring-boot-starter-hateoas")
-    compile("org.springframework.boot:spring-boot-starter-security")
-    compile("org.springframework:spring-tx")
-    compile("org.springframework.security.oauth:spring-security-oauth2")
 
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework:spring-tx")
     compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.0.2'
+
+    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.security.oauth:spring-security-oauth2")
+    compile("org.springframework.cloud:spring-cloud-security:1.1.0.RELEASE")
+
     // spring-boot does cleverness based on finding jdbc drivers in the classpath
     // and double cleverness based on finding an in-memory one (namely spinning up an h2 instance
     // if you haven't specified a connection string). You probably want to switch this to testCompile
@@ -59,4 +63,5 @@ dependencies {
     testCompile("junit:junit")
     testCompile("com.jayway.restassured:rest-assured:2.9.0")
     testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.security:spring-security-test")
 }
