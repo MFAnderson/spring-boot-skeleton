@@ -51,12 +51,14 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.security.oauth:spring-security-oauth2")
     compile("org.springframework.cloud:spring-cloud-security:1.1.0.RELEASE")
+    compile("org.mitre:openid-connect-client:1.2.2")
 
     // spring-boot does cleverness based on finding jdbc drivers in the classpath
     // and double cleverness based on finding an in-memory one (namely spinning up an h2 instance
     // if you haven't specified a connection string). You probably want to switch this to testCompile
     // and then you'll have a nice in-memory database for your functional tests.
     compile("com.h2database:h2")
+
     compile("io.springfox:springfox-swagger2:2.2.2")
     compile("io.springfox:springfox-swagger-ui:2.2.2")
 

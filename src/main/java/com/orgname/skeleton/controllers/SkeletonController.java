@@ -26,7 +26,6 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-@EnableResourceServer
 public class SkeletonController {
 
     //for HATEOAS links
@@ -49,12 +48,16 @@ public class SkeletonController {
     public ResponseEntity<Skeleton> create(@RequestParam String name) {
         Skeleton skeleton = skeletonService.createSkeleton(name);
         skeleton.add(linkTo(THIS.get(name)).withSelfRel());
+
         return new ResponseEntity<>(skeleton, CREATED);
     }
     @RequestMapping(path = "/skeletons/{name}", method = GET)
     public ResponseEntity<Skeleton> get(@PathVariable @NotNull String name) {
         Skeleton skeleton = skeletonService.getByName(name).orElseThrow(() -> new NotFoundException("No skeleton with name " + name));
         skeleton.add(linkTo(THIS.get(name)).withSelfRel());
+        Optional<String> ha = Optional.of("ha");
+        Optional<StringBuilder> sb = Optional.of(new StringBuilder());
+        Optional<StringBuilder> lol = sb.map(x -> x.append("lol"));
         return new ResponseEntity<>(skeleton, OK);
     }
 
